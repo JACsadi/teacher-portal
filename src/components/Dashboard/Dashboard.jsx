@@ -4,9 +4,9 @@ import { LayoutDashboard, Plus, BookOpen, Trophy, User, LogOut } from "lucide-re
 // Teacher Dashboard
 function Dashboard({ setView, onLogout }) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header with company name and logout button */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-md">
+      <div className="bg-red-600 text-white p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Tik Tik</h1>
           <div className="flex items-center space-x-4">
@@ -24,7 +24,7 @@ function Dashboard({ setView, onLogout }) {
 
       <div className="p-6 max-w-6xl mx-auto">
         <div className="flex items-center space-x-4 mb-8">
-          <LayoutDashboard className="w-8 h-8 text-indigo-600" />
+          <LayoutDashboard className="w-8 h-8 text-red-600" />
           <h1 className="text-3xl font-extrabold text-gray-900">
             Teacher's Portal Dashboard
           </h1>
@@ -38,11 +38,11 @@ function Dashboard({ setView, onLogout }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <div
             onClick={() => setView("create")}
-            className="bg-white p-6 rounded-xl shadow-md border border-gray-100 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
+            className="bg-white p-6 rounded-xl shadow-md border border-gray-200 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-indigo-100 rounded-lg">
-                <Plus className="h-6 w-6 text-indigo-600" />
+              <div className="p-3 bg-red-100 rounded-lg">
+                <Plus className="h-6 w-6 text-red-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Create Assessment</h3>
@@ -53,11 +53,11 @@ function Dashboard({ setView, onLogout }) {
 
           <div
             onClick={() => setView("lessonHistory")}
-            className="bg-white p-6 rounded-xl shadow-md border border-gray-100 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
+            className="bg-white p-6 rounded-xl shadow-md border border-gray-200 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-green-100 rounded-lg">
-                <BookOpen className="h-6 w-6 text-green-600" />
+              <div className="p-3 bg-red-100 rounded-lg">
+                <BookOpen className="h-6 w-6 text-red-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Lesson History</h3>
@@ -68,11 +68,11 @@ function Dashboard({ setView, onLogout }) {
 
           <div
             onClick={() => setView("leaderboard")}
-            className="bg-white p-6 rounded-xl shadow-md border border-gray-100 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
+            className="bg-white p-6 rounded-xl shadow-md border border-gray-200 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-yellow-100 rounded-lg">
-                <Trophy className="h-6 w-6 text-yellow-600" />
+              <div className="p-3 bg-red-100 rounded-lg">
+                <Trophy className="h-6 w-6 text-red-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Student Leaderboard</h3>
@@ -83,11 +83,11 @@ function Dashboard({ setView, onLogout }) {
 
           <div
             onClick={() => setView("profile")}
-            className="bg-white p-6 rounded-xl shadow-md border border-gray-100 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
+            className="bg-white p-6 rounded-xl shadow-md border border-gray-200 cursor-pointer hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <User className="h-6 w-6 text-blue-600" />
+              <div className="p-3 bg-red-100 rounded-lg">
+                <User className="h-6 w-6 text-red-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Your Profile</h3>

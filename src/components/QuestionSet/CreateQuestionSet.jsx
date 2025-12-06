@@ -188,9 +188,9 @@ function CreateQuestionSet({ setView, onLogout }) {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-white">
         {/* Header with company name and logout button */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-md">
+        <div className="bg-red-600 text-white p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <h1 className="text-xl font-bold">Tik Tik</h1>
             <div className="flex items-center space-x-4">
@@ -206,8 +206,8 @@ function CreateQuestionSet({ setView, onLogout }) {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] bg-gray-50 p-6">
-          <CheckCircle className="w-20 h-20 text-green-500 animate-pulse" />
+        <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] bg-white p-6">
+          <CheckCircle className="w-20 h-20 text-red-500 animate-pulse" />
           <h1 className="text-3xl font-bold text-gray-800 mt-4">
             Set Submitted Successfully!
           </h1>
@@ -220,9 +220,9 @@ function CreateQuestionSet({ setView, onLogout }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header with company name and navigation */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-md">
+      <div className="bg-red-600 text-white p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Tik Tik</h1>
           <div className="flex items-center space-x-2">
@@ -266,7 +266,7 @@ function CreateQuestionSet({ setView, onLogout }) {
       </div>
 
       <div className="p-8 min-h-[calc(100vh-80px)]">
-        <h1 className="text-3xl font-extrabold text-gray-900 mb-6 border-b pb-2">
+        <h1 className="text-3xl font-extrabold text-gray-900 mb-6 border-b pb-2 border-red-600">
           Create New Question Set
         </h1>
 
@@ -282,8 +282,8 @@ function CreateQuestionSet({ setView, onLogout }) {
         )}
 
         {/* Metadata Form */}
-        <div className="bg-white p-6 rounded-xl shadow-md mb-8">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Set Details</h2>
+        <div className="bg-white p-6 rounded-xl shadow-md mb-8 border border-gray-200">
+          <h2 className="text-xl font-bold text-gray-800 mb-4 text-red-600">Set Details</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <input
               type="text"
@@ -291,7 +291,7 @@ function CreateQuestionSet({ setView, onLogout }) {
               value={metadata.class}
               onChange={handleMetadataChange}
               placeholder="Class (e.g., 9, 10, XII)"
-              className="p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+              className="p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
               required
             />
             <input
@@ -300,7 +300,7 @@ function CreateQuestionSet({ setView, onLogout }) {
               value={metadata.subjectName}
               onChange={handleMetadataChange}
               placeholder="Subject Name (e.g., Physics)"
-              className="p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+              className="p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
               required
             />
             <input
@@ -309,7 +309,7 @@ function CreateQuestionSet({ setView, onLogout }) {
               value={metadata.lessonName}
               onChange={handleMetadataChange}
               placeholder="Lesson Name (e.g., Electromagnetism)"
-              className="p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+              className="p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
               required
             />
           </div>
@@ -317,7 +317,7 @@ function CreateQuestionSet({ setView, onLogout }) {
 
         <form onSubmit={handleSubmit}>
           {/* Question Forms */}
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Questions</h2>
+          <h2 className="text-xl font-bold text-gray-800 mb-4 text-red-600">Questions</h2>
           {questions.map((q, index) => (
             <QuestionForm
               key={index}
@@ -333,7 +333,7 @@ function CreateQuestionSet({ setView, onLogout }) {
             <button
               type="button"
               onClick={addNewQuestion}
-              className="flex items-center space-x-2 px-6 py-3 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="flex items-center space-x-2 px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
               disabled={isSubmitting}
             >
               <ListPlus className="w-5 h-5" />
@@ -352,7 +352,7 @@ function CreateQuestionSet({ setView, onLogout }) {
               </button>
               <button
                 type="submit"
-                className="flex items-center space-x-2 px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50"
+                className="flex items-center space-x-2 px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-lg hover:bg-red-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
                 disabled={questions.length === 0 || isSubmitting}
               >
                 {isSubmitting ? (

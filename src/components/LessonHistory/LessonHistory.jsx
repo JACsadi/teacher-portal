@@ -55,7 +55,12 @@ function LessonHistory({ setView, onLogout }) {
       // For each subject, fetch its lessons
       for (const subject of subjects) {
         const subjectLessons = await fetchSubjectLessons(subject.subjectId);
-        allLessons = [...allLessons, ...subjectLessons];
+        // Add subject title to each lesson
+        const lessonsWithSubject = subjectLessons.map(lesson => ({
+          ...lesson,
+          subjectName: subject.title || subject.subjectId
+        }));
+        allLessons = [...allLessons, ...lessonsWithSubject];
       }
 
       setLessons(allLessons);
@@ -102,9 +107,9 @@ function LessonHistory({ setView, onLogout }) {
 
   if (loading && !selectedLesson) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading lessons...</p>
         </div>
       </div>
@@ -114,9 +119,9 @@ function LessonHistory({ setView, onLogout }) {
   if (selectedLesson) {
     // View to show questions for the selected lesson
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-white">
         {/* Header with company name and navigation */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-md">
+        <div className="bg-red-600 text-white p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <h1 className="text-xl font-bold">Tik Tik</h1>
             <div className="flex items-center space-x-2">
@@ -160,14 +165,14 @@ function LessonHistory({ setView, onLogout }) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <div className="bg-white rounded-xl shadow-md p-6 mb-6 border border-gray-200">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4 text-red-600">
               Questions ({questions.length})
             </h2>
 
             {questionsLoading ? (
               <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
                 <p className="mt-4 text-gray-600">Loading questions...</p>
               </div>
             ) : questions.length === 0 ? (
@@ -194,10 +199,10 @@ function LessonHistory({ setView, onLogout }) {
                         return (
                           <div
                             key={optionIndex}
-                            className={`p-2 rounded ${isCorrect ? 'bg-green-100 border border-green-300' : 'bg-white'}`}
+                            className={`p-2 rounded ${isCorrect ? 'bg-red-100 border border-red-300' : 'bg-white'}`}
                           >
                             <span className="font-medium">{String.fromCharCode(65 + optionIndex)}:</span> {option}
-                            {isCorrect && <span className="ml-2 text-green-600 font-medium">(Correct Answer)</span>}
+                            {isCorrect && <span className="ml-2 text-red-600 font-medium">(Correct Answer)</span>}
                           </div>
                         );
                       })}
@@ -213,9 +218,9 @@ function LessonHistory({ setView, onLogout }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header with company name and navigation */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-md">
+      <div className="bg-red-600 text-white p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Tik Tik</h1>
           <div className="flex items-center space-x-2">
@@ -267,42 +272,42 @@ function LessonHistory({ setView, onLogout }) {
 
           <button
             onClick={fetchAllLessons}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-200"
+            className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-200"
           >
             Refresh
           </button>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-            <p className="text-sm text-yellow-800">{error}</p>
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-sm text-red-800">{error}</p>
           </div>
         )}
 
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-red-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Subject & Lesson
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Class
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Created Date
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Questions
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Students
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Avg. Score
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -310,11 +315,11 @@ function LessonHistory({ setView, onLogout }) {
               <tbody className="bg-white divide-y divide-gray-200">
                 {lessons.length > 0 ? (
                   lessons.map((lesson) => (
-                    <tr key={lesson.id} className="hover:bg-gray-50 transition duration-150">
+                    <tr key={lesson.id} className="hover:bg-red-50 transition duration-150">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="flex-shrink-0 p-2 bg-indigo-100 rounded-lg">
-                            <FileText className="h-5 w-5 text-indigo-600" />
+                          <div className="flex-shrink-0 p-2 bg-red-100 rounded-lg">
+                            <FileText className="h-5 w-5 text-red-600" />
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">{lesson.subjectName}</div>
@@ -357,7 +362,7 @@ function LessonHistory({ setView, onLogout }) {
                       <td className="px-6 py-4 whitespace-nowrap text-sm">
                         <button
                           onClick={() => handleLessonClick(lesson)}
-                          className="flex items-center text-indigo-600 hover:text-indigo-900"
+                          className="flex items-center text-red-600 hover:text-red-900"
                           title="View Questions"
                         >
                           <Eye className="h-4 w-4 mr-1" />
@@ -383,21 +388,21 @@ function LessonHistory({ setView, onLogout }) {
         </div>
 
         {lessons.length > 0 && (
-          <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Lesson Statistics</h2>
+          <div className="mt-8 p-6 bg-white rounded-xl shadow-md border border-gray-200">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4 text-red-600">Lesson Statistics</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-indigo-50 p-4 rounded-lg">
-                <div className="text-3xl font-bold text-indigo-700">{lessons.length}</div>
+              <div className="bg-red-50 p-4 rounded-lg">
+                <div className="text-3xl font-bold text-red-700">{lessons.length}</div>
                 <div className="text-sm text-gray-600">Total Lessons</div>
               </div>
-              <div className="bg-green-50 p-4 rounded-lg">
-                <div className="text-3xl font-bold text-green-700">
+              <div className="bg-red-50 p-4 rounded-lg">
+                <div className="text-3xl font-bold text-red-700">
                   {lessons.reduce((sum, lesson) => sum + lesson.questionCount, 0)}
                 </div>
                 <div className="text-sm text-gray-600">Total Questions</div>
               </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <div className="text-3xl font-bold text-blue-700">
+              <div className="bg-red-50 p-4 rounded-lg">
+                <div className="text-3xl font-bold text-red-700">
                   {lessons.length > 0
                     ? Math.round(lessons.reduce((sum, lesson) => sum + lesson.averageScore, 0) / lessons.length) || 0
                     : 0}%

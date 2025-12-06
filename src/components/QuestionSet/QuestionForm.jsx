@@ -24,9 +24,9 @@ function QuestionForm({ questionData, index, updateQuestion, removeQuestion }) {
   const optionsKeys = Object.keys(questionData.options);
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-lg border border-gray-100 mb-6 transition-all duration-300 hover:shadow-xl">
+    <div className="p-6 bg-white rounded-xl shadow-lg border border-gray-200 mb-6 transition-all duration-300 hover:shadow-xl">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-semibold text-indigo-700">
+        <h3 className="text-xl font-semibold text-red-600">
           Question #{index + 1}
         </h3>
         <button
@@ -53,7 +53,7 @@ function QuestionForm({ questionData, index, updateQuestion, removeQuestion }) {
           value={questionData.question}
           onChange={handleTextChange}
           placeholder="Type the question here..."
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 transition duration-150"
         ></textarea>
       </div>
 
@@ -74,7 +74,7 @@ function QuestionForm({ questionData, index, updateQuestion, removeQuestion }) {
               value={questionData.options[key]}
               onChange={handleTextChange}
               placeholder={`Enter option ${key} text`}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 transition duration-150"
             />
           </div>
         ))}
@@ -97,7 +97,7 @@ function QuestionForm({ questionData, index, updateQuestion, removeQuestion }) {
                 value={key}
                 checked={questionData.correctAnswer === key}
                 onChange={handleCorrectAnswerChange}
-                className="form-radio h-5 w-5 text-indigo-600 focus:ring-indigo-500 transition duration-150"
+                className="form-radio h-5 w-5 text-red-600 focus:ring-red-500 transition duration-150"
               />
               <span className="text-gray-900 font-medium">Option {key}</span>
             </label>

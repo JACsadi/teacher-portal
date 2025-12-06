@@ -8,23 +8,23 @@ function Login({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Validation: Check if email and password are not empty
     if (!email.trim() || !password.trim()) {
       setError("Please enter both email and password.");
       return;
     }
-    
+
     // Since we allow any non-empty values, just trigger login
     onLogin();
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 p-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-white p-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-            <LogIn className="w-8 h-8 text-indigo-600" />
+          <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <LogIn className="w-8 h-8 text-red-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900">Welcome to Tik Tik</h1>
           <p className="text-gray-600 mt-2">Please sign in to your account</p>
@@ -51,7 +51,7 @@ function Login({ onLogin }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-150"
               />
             </div>
           </div>
@@ -70,14 +70,14 @@ function Login({ onLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-150"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             <LogIn className="w-5 h-5" />
             <span>Sign In</span>

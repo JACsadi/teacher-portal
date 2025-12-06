@@ -98,16 +98,16 @@ function Leaderboard({ setView, onLogout }) {
   ];
 
   const getRankIcon = (rank) => {
-    if (rank === 1) return <Trophy className="h-5 w-5 text-yellow-500" />;
-    if (rank === 2) return <Trophy className="h-5 w-5 text-gray-400" />;
-    if (rank === 3) return <Trophy className="h-5 w-5 text-amber-700" />;
+    if (rank === 1) return <Trophy className="h-5 w-5 text-red-500" />;
+    if (rank === 2) return <Trophy className="h-5 w-5 text-red-300" />;
+    if (rank === 3) return <Trophy className="h-5 w-5 text-red-700" />;
     return <span className="font-medium">{rank}</span>;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header with company name and navigation */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-md">
+      <div className="bg-red-600 text-white p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Tik Tik</h1>
           <div className="flex items-center space-x-2">
@@ -158,7 +158,7 @@ function Leaderboard({ setView, onLogout }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
           <div className="p-4 border-b border-gray-200">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <div>
@@ -166,7 +166,7 @@ function Leaderboard({ setView, onLogout }) {
                 <p className="text-sm text-gray-500">10th Grade • 25 Students</p>
               </div>
               <div className="mt-2 md:mt-0">
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
                   <Target className="h-4 w-4 mr-1" />
                   Active Lesson
                 </div>
@@ -176,31 +176,31 @@ function Leaderboard({ setView, onLogout }) {
 
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-red-50">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-16">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider w-16">
                     Rank
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Student
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Class
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Subject
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Lesson
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-red-800 uppercase tracking-wider">
                     Score
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {students.map((student) => (
-                  <tr key={student.id} className="hover:bg-gray-50 transition duration-150">
+                  <tr key={student.id} className="hover:bg-red-50 transition duration-150">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         {student.rank <= 3 ? (
@@ -213,8 +213,8 @@ function Leaderboard({ setView, onLogout }) {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                            <User className="h-5 w-5 text-indigo-600" />
+                          <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                            <User className="h-5 w-5 text-red-600" />
                           </div>
                         </div>
                         <div className="ml-4">
@@ -233,7 +233,7 @@ function Leaderboard({ setView, onLogout }) {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <Star className="h-4 w-4 text-yellow-400 mr-1" />
+                        <Star className="h-4 w-4 text-red-400 mr-1" />
                         <span className="text-sm font-semibold text-gray-900">{student.score}%</span>
                       </div>
                     </td>
@@ -245,10 +245,10 @@ function Leaderboard({ setView, onLogout }) {
         </div>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
             <div className="flex items-center">
-              <div className="p-3 rounded-lg bg-yellow-100">
-                <Trophy className="h-6 w-6 text-yellow-600" />
+              <div className="p-3 rounded-lg bg-red-100">
+                <Trophy className="h-6 w-6 text-red-600" />
               </div>
               <div className="ml-4">
                 <h3 className="text-sm font-medium text-gray-500">Top Performer</h3>
@@ -258,10 +258,10 @@ function Leaderboard({ setView, onLogout }) {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
             <div className="flex items-center">
-              <div className="p-3 rounded-lg bg-blue-100">
-                <Target className="h-6 w-6 text-blue-600" />
+              <div className="p-3 rounded-lg bg-red-100">
+                <Target className="h-6 w-6 text-red-600" />
               </div>
               <div className="ml-4">
                 <h3 className="text-sm font-medium text-gray-500">Average Score</h3>
@@ -273,10 +273,10 @@ function Leaderboard({ setView, onLogout }) {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
             <div className="flex items-center">
-              <div className="p-3 rounded-lg bg-green-100">
-                <School className="h-6 w-6 text-green-600" />
+              <div className="p-3 rounded-lg bg-red-100">
+                <School className="h-6 w-6 text-red-600" />
               </div>
               <div className="ml-4">
                 <h3 className="text-sm font-medium text-gray-500">Total Students</h3>
